@@ -28,6 +28,7 @@ import (
 	"sigs.k8s.io/scheduler-plugins/pkg/coscheduling"
 	"sigs.k8s.io/scheduler-plugins/pkg/networkaware/networkoverhead"
 	"sigs.k8s.io/scheduler-plugins/pkg/networkaware/topologicalsort"
+	"sigs.k8s.io/scheduler-plugins/pkg/networktraffic"
 	"sigs.k8s.io/scheduler-plugins/pkg/noderesources"
 	"sigs.k8s.io/scheduler-plugins/pkg/noderesourcetopology"
 	"sigs.k8s.io/scheduler-plugins/pkg/podstate"
@@ -47,6 +48,7 @@ func main() {
 	// Later they can consist of scheduler profile(s) and hence
 	// used by various kinds of workloads.
 	command := app.NewSchedulerCommand(
+		app.WithPlugin(networktraffic.Name, networktraffic.New),
 		app.WithPlugin(capacityscheduling.Name, capacityscheduling.New),
 		app.WithPlugin(coscheduling.Name, coscheduling.New),
 		app.WithPlugin(loadvariationriskbalancing.Name, loadvariationriskbalancing.New),

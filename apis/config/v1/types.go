@@ -23,6 +23,20 @@ import (
 )
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +k8s:defaulter-gen=true
+
+type NetworkTrafficArgs struct {
+	metav1.TypeMeta `json:",inline"`
+
+	// Address of the Prometheus server
+	Address *string `json:"prometheusAddress,omitempty"`
+	//NetworkInterface to be monitred, assume that nodes' OS is homogeneous
+	NetworkInterface *string `json:"networkInterface,omitempty"`
+	// TimeRangeInMinutes used to aggregate the network metrics
+	TimeRangeinMinutes *int64 `json:"timeRangeinMinutes,omitempty"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // CoschedulingArgs defines the scheduling parameters for Coscheduling plugin.
 type CoschedulingArgs struct {

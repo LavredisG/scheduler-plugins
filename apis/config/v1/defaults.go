@@ -104,6 +104,20 @@ var (
 	DefaultSySchedProfileName = "all-syscalls"
 )
 
+// SetDefaultNetworkTrafficArgs sets the default parameters for the NetworkTraffic plugin
+func SetDefaultNetworkTrafficArgs(args *NetworkTrafficArgs) {
+	if args.TimeRangeinMinutes == nil {
+		defaultTime := int64(5)
+		args.TimeRangeinMinutes = &defaultTime
+	}
+
+	if args.NetworkInterface == nil || *args.NetworkInterface == "" {
+		netInterface := "ens192"
+		args.NetworkInterface = &netInterface
+	}
+}
+
+
 // SetDefaults_CoschedulingArgs sets the default parameters for Coscheduling plugin.
 func SetDefaults_CoschedulingArgs(obj *CoschedulingArgs) {
 	if obj.PermitWaitingTimeSeconds == nil {
