@@ -105,14 +105,14 @@ var (
 )
 
 // SetDefaultNetworkTrafficArgs sets the default parameters for the NetworkTraffic plugin
-func SetDefaultNetworkTrafficArgs(args *NetworkTrafficArgs) {
-	if args.TimeRangeinMinutes == nil {
+func SetDefaults_NetworkTrafficArgs(args *NetworkTrafficArgs) {
+	if args.TimeRangeInMinutes == nil {
 		defaultTime := int64(5)
-		args.TimeRangeinMinutes = &defaultTime
+		args.TimeRangeInMinutes = &defaultTime
 	}
 
 	if args.NetworkInterface == nil || *args.NetworkInterface == "" {
-		netInterface := "ens192"
+		netInterface := "eth0"
 		args.NetworkInterface = &netInterface
 	}
 }

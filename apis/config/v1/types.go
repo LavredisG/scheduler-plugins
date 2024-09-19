@@ -33,7 +33,7 @@ type NetworkTrafficArgs struct {
 	//NetworkInterface to be monitred, assume that nodes' OS is homogeneous
 	NetworkInterface *string `json:"networkInterface,omitempty"`
 	// TimeRangeInMinutes used to aggregate the network metrics
-	TimeRangeinMinutes *int64 `json:"timeRangeinMinutes,omitempty"`
+	TimeRangeInMinutes *int64 `json:"timeRangeInMinutes,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
